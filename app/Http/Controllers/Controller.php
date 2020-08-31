@@ -25,21 +25,23 @@ class Controller extends BaseController
     }
 
     private function handleCommands($request, $bot) {
-       
-        if ($request->input('message')) {
-            $message = $request->input('message');
-            $sanitizedString = $this->sanitizeString($message);
+       try {
+            if ($request->input('message')) {
+                $message = $request->input('message');
+                $sanitizedString = $this->sanitizeString($message);
 
-            $commandArr = [
-                '/example' => function($bot, $request) { \App\Services\TelegramBot\ExampleService::runCommand($bot, $request); }
-                '/location' => function($bot, $request) { \App\Services\TelegramBot\LocationSearchService::runCommand($bot, $request)}
-            ];
-            if (array_key_exists($sanitizedString, $commandArr)){
-                $commandArr[$sanitizedString]($bot, $request);
+                $commandArr = [
+                    '/example' => function($bot, $request) { \App\Services\TelegramBot\ExampleService::runCommand($bot, $request); }
+                    '/location' => function($bot, $request) { \App\Services\TelegramBot\LocationSearchService::runCommand($bot, $request)}
+                ];
+                if (array_key_exists($sanitizedString, $commandArr)){
+                    $commandArr[$sanitizedString]($bot, $request);
+                }
             }
-
+            return;
+        } catch(\Throwable $error) {
+            error_log($error->getMessage());
         }
-        return;
     }
 
     public function sanitizeString($message){
