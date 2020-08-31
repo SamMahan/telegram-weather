@@ -21,12 +21,15 @@ class LocationSearchService extends TelegramBotService
         $textSplit = explode(' ', $text);
         $searchString = false;
         if (array_key_exists(1, $textSplit)) $searchString = $textSplit[1];
+
         if ($searchString) {
             $locationArray = Location::getLocations($searchString);
         }
+
         if (sizeof($locationArray) > 1) {
 
         }
+        
         $data = [
             'reply_markup' => [
                 'inline_keyboard' => $this->makeMessageKeyboard($locationArray)
