@@ -46,7 +46,7 @@ class Location
             'locationType' => 'city',
             'language' => 'en-US',
             'format' => 'json',
-            'api_key' => env('WEATHER_API_KEY')
+            'apiKey' => env('WEATHER_API_KEY')
         ];
         $params = Unirest\Request\Body::form($params);
         $response = Unirest\Request::get(
