@@ -9,7 +9,6 @@ use App\Services\WeatherApis\Location;
 
 class LocationSearchService extends TelegramBotService
 {
-
     public static function runCommand(
         \TgBotApi\BotApiBase\BotApi $bot, 
         Request $request

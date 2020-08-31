@@ -16,11 +16,3 @@
 $router->get('/', ['uses' => 'Controller@route']);
 $router->post('/', ['uses' => 'Controller@route']);
 
-// $router->get('/', function () use ($router) {
-    // return "HEY!";
-// });
-// $router->get('/test', ['uses' => 'Controller@route']);
-
-// $router->get('/', function() use ($router) {
-//     return "hey! I'm here";
-// });
