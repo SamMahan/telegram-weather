@@ -57,7 +57,7 @@ class Location
 
         $body = $response->body;
         $returnArr = [];
-        $locationObj = $returnArr['location'];
+        $locationObj = $body['location'];
         // each field is an array of all the results. A single result entity will share a comm-
         // on index where their particular field value can be found across these result arrays
         $locationArr = [];

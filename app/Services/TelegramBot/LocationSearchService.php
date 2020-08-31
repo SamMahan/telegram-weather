@@ -36,7 +36,7 @@ class LocationSearchService extends TelegramBotService
             ]
         ];
         $bot->send(\TgBotApi\BotApiBase\Method\SendMessageMethod::create($chatId, 'howdy'));//, $data));
-           error_log("AFTER SEND");
+        error_log("AFTER SEND");
         return true;
     }
 
