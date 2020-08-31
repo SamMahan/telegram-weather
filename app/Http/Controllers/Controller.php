@@ -11,7 +11,7 @@ class Controller extends BaseController
     public function route(Request $request) {
         error_reporting(E_ALL);
         ini_set("display_errors", 1);
-        // error_log()
+        error_log('BOT_ENTER');
         try{
             $botKey = getenv('BOT_TOKEN');
             $requestFactory = new \Http\Factory\Guzzle\RequestFactory();
@@ -28,23 +28,19 @@ class Controller extends BaseController
     }
 
     private function handleCommands($request, $bot) {
-       try {
-            if ($request->input('message')) {
-                $message = $request->input('message');
-                $sanitizedString = $this->sanitizeString($message);
+        if ($request->input('message')) {
+            $message = $request->input('message');
+            $sanitizedString = $this->sanitizeString($message);
 
-                $commandArr = [
-                    // '/example' => function($bot, $request) { \App\Services\TelegramBot\ExampleService::runCommand($bot, $request); }
-                    '/location' => function($bot, $request) { \App\Services\TelegramBot\LocationSearchService::runCommand($bot, $request); }
-                ];
-                if (array_key_exists($sanitizedString, $commandArr)){
-                    $commandArr[$sanitizedString]($bot, $request);
-                }
+            $commandArr = [
+                // '/example' => function($bot, $request) { \App\Services\TelegramBot\ExampleService::runCommand($bot, $request); }
+                '/location' => function($bot, $request) { \App\Services\TelegramBot\LocationSearchService::runCommand($bot, $request); }
+            ];
+            if (array_key_exists($sanitizedString, $commandArr)){
+                $commandArr[$sanitizedString]($bot, $request);
             }
-            return;
-        } catch(\Throwable $error) {
-            error_log($error->getMessage());
         }
+        return;
     }
 
     public function sanitizeString($message){
