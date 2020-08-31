@@ -35,7 +35,7 @@ class Location
 
    public function __set($key, $value) {
        if (property_exists($this, $key)) {
-           $this->key => $value;
+           $this->key = $value;
        }
    }
 
