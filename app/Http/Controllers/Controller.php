@@ -47,7 +47,8 @@ class Controller extends BaseController
         
         $chat = $message['chat'];
         $text = $message['text'];
-        $command = explode($text, ' ')[0];
+        $command = explode( ' ', $text)[0];
+        e
         $text = ($chat['type'] === 'private') ? $command : str_replace('@'.getenv('BOT_NAME'), '', $command);
         return $text;
     }
