@@ -9,6 +9,8 @@ use Unirest;
 class Controller extends BaseController
 {
     public function route(Request $request) {
+        error_reporting(E_ALL);
+        ini_set("display_errors", 1);
         try{
             $botKey = getenv('BOT_TOKEN');
             // $requestFactory = new \Http\Factory\Guzzle\RequestFactory();
