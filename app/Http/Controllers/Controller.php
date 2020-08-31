@@ -20,7 +20,7 @@ class Controller extends BaseController
             
             $this->handleCommands($request, $bot);
         } catch (\Throwable $err) {
-            error_log(print_r($err, true));
+            error_log(print_r($err->getMessage(), true));
         }
     }
 
@@ -31,7 +31,7 @@ class Controller extends BaseController
                 $sanitizedString = $this->sanitizeString($message);
 
                 $commandArr = [
-                    '/example' => function($bot, $request) { \App\Services\TelegramBot\ExampleService::runCommand($bot, $request); }
+                    // '/example' => function($bot, $request) { \App\Services\TelegramBot\ExampleService::runCommand($bot, $request); }
                     '/location' => function($bot, $request) { \App\Services\TelegramBot\LocationSearchService::runCommand($bot, $request)}
                 ];
                 if (array_key_exists($sanitizedString, $commandArr)){
