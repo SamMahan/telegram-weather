@@ -64,7 +64,7 @@ class Location
         for ($i = 0; $i < sizeOf($locationObj['address']); $i++) {
             $data = [];
             foreach ($locationObj as $key => $fieldArr){
-                $data[$key] => $fieldArr[$i];
+                $data[$key] = $fieldArr[$i];
             }
             $locationArr[] = new Location($data);
         }
