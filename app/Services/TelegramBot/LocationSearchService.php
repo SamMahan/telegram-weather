@@ -32,13 +32,13 @@ class LocationSearchService extends TelegramBotService
                 'inline_keyboard' => $this->makeMessageKeyboard($locationArray)
             ]
         ];
-        $bot->send(\TgBotApi\BotApiBase\Method\SendMessageMethod::create($chatId, 'howdy'));//, $data));
+        $bot->send(\TgBotApi\BotApiBase\Method\SendMessageMethod::create($chatId, $data));
         error_log("AFTER SEND");
         return true;
     }
 
     private function makeMessageKeyboard($locationArr) {
-        $buttonArray = []
+        $buttonArray = [];
         foreach ($locationArr as $locationObj) {
             $buttonArray[] = [
                 'text' => 'this is a test',
@@ -46,7 +46,7 @@ class LocationSearchService extends TelegramBotService
                     'callbackType' => 'getWeatherByPostalCode',
                     'callbackPostal' => 'Postal Code Test'
                 ]
-                ];
+            ];
         }
         return $buttonArray;
     }
