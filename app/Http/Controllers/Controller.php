@@ -12,6 +12,7 @@ class Controller extends BaseController
         try{
             $botKey = getenv('BOT_TOKEN');
             $requestFactory = new \Http\Factory\Guzzle\RequestFactory();
+            // $requestFactory->createRequest($method, $uri);
             $streamFactory = new \Http\Factory\Guzzle\StreamFactory();
             $client = new \Http\Adapter\Guzzle6\Client();
             $apiClient = new \TgBotApi\BotApiBase\ApiClient($requestFactory, $streamFactory, $client);
@@ -31,8 +32,12 @@ class Controller extends BaseController
 
             $commandArr = [
                 '/example' => function($bot, $request) { \App\Services\TelegramBot\ExampleService::runCommand($bot, $request); }
+                '/location' => function($bot, $request) { \App\Services\TelegramBot\LocationSearchService::runCommand($bot, $request)}
             ];
-            $commandArr[$sanitizedString]($bot, $request);
+            if (array_key_exists($sanitizedString, $commandArr)){
+                $commandArr[$sanitizedString]($bot, $request);
+            }
+
         }
         return;
     }
