@@ -32,7 +32,7 @@ class Controller extends BaseController
 
                 $commandArr = [
                     // '/example' => function($bot, $request) { \App\Services\TelegramBot\ExampleService::runCommand($bot, $request); }
-                    '/location' => function($bot, $request) { \App\Services\TelegramBot\LocationSearchService::runCommand($bot, $request)}
+                    '/location' => function($bot, $request) { \App\Services\TelegramBot\LocationSearchService::runCommand($bot, $request); }
                 ];
                 if (array_key_exists($sanitizedString, $commandArr)){
                     $commandArr[$sanitizedString]($bot, $request);
