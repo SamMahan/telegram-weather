@@ -45,7 +45,7 @@ class LocationSearchService extends TelegramBotService
                     'callbackType' => 'getWeatherByPostalCode',
                     'callbackPostal' => 'Postal Code Test'
                 ]
-            ]
+                ];
         }
         return $buttonArray;
     }
