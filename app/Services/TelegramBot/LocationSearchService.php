@@ -32,8 +32,8 @@ class LocationSearchService extends TelegramBotService
                 'inline_keyboard' => $this->makeMessageKeyboard($locationArray)
             ]
         ];
-        $bot->send(\TgBotApi\BotApiBase\Method\SendMessageMethod::create($chatId, 'howdy', $data));
-        error_log("AFTER SEND");
+        $bot->send(\TgBotApi\BotApiBase\Method\SendMessageMethod::create($chatId, 'howdy'));//, $data));
+           error_log("AFTER SEND");
         return true;
     }
 
