@@ -61,7 +61,7 @@ class Location
         // each field is an array of all the results. A single result entity will share a comm-
         // on index where their particular field value can be found across these result arrays
         $locationArr = [];
-        for (i = 0, i < sizeOf($locationObj['address'])) {
+        for (i = 0; i < sizeOf($locationObj['address']); i++) {
             $data = [];
             foreach ($locationObj as $key => $fieldArr){
                 $data[$key] => $fieldArr[$i];
