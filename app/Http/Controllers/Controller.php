@@ -24,6 +24,7 @@ class Controller extends BaseController
             $this->handleCommands($request, $bot);
         } catch (\Throwable $err) {
             error_log(print_r($err->getMessage(), true));
+            error_log($err->getFile());
             error_log($err->getLine());
         }
     }
