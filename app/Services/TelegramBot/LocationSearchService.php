@@ -14,6 +14,7 @@ class LocationSearchService extends TelegramBotService
         \TgBotApi\BotApiBase\BotApi $bot, 
         Request $request
     ) {
+        error_log("BOT");
         $message = $request->input('message');
         $chat = $message['chat'];
         $chatId = $chat['id'];
