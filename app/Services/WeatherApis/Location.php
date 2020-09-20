@@ -50,7 +50,7 @@ class Location
         ];
         // $params = Unirest\Request\Body::form($params);
         $response = Unirest\Request::get(
-            'https://api.weather.com/v3/location' . env('BOT_TOKEN') . '/sendMessage', 
+            'https://api.weather.com/v3/location' . env('WEATHER_API_KEY') . '/sendMessage', 
             $headers,
             $params
         );

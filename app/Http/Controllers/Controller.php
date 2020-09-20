@@ -33,7 +33,6 @@ class Controller extends BaseController
         if ($request->input('message')) {
             $message = $request->input('message');
             $sanitizedString = $this->sanitizeString($message);
-            error_log($sanitizedString);
             $commandArr = [
                 // '/example' => function($bot, $request) { \App\Services\TelegramBot\ExampleService::runCommand($bot, $request); }
                 '/location' => function($bot, $request) { \App\Services\TelegramBot\LocationSearchService::runCommand($bot, $request); }
